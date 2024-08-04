@@ -1,0 +1,115 @@
+
+<div class="background">
+   
+
+    <div class="row text" style="padding:5%; align-items: center;">
+        <div class="card  background login" *ngIf="isLogin">
+            <form class="row  " [formGroup]="LoginForm">
+                <div class="col-md-12 text-center">
+                    <h4>Login Here !</h4>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <label for="">Mobile Number</label>
+                    <input type="number" class="form-control" placeholder=" Your Mobile Number" formControlName="number">
+                    <span class="text-danger" *ngIf="loginInfo['number'].invalid && loginInfo['number'].touched ">Enter Your Number </span>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" placeholder=" Password" formControlName="password">
+                    <span class="text-danger" *ngIf="loginInfo['password'].invalid && loginInfo['password'].touched ">Enter Your Password </span>
+                </div>
+                <div class="col-md-5 mt-4">
+                    <h6 class="forgot" (click)="forgote()">Forgot Password</h6>
+                </div>
+                <div class="col-md-12 mt-2 text-center">
+                    <app-button type="simple" value="Login" (click)="UserLogin()" [disable]="loginValid()" ></app-button>
+                </div>
+                <div class="col-md-12 mt-4 text-center">
+                    <p>Ragister you account <span class="txt" (click)="signUp()">Sign Up</span></p>
+                </div>
+            </form>
+        </div>
+        <div class="card singin background" *ngIf="isSignUp">
+            <form class="row" [formGroup]="SignUpFrom">
+                <div class="col-md-12 mt-2 text-center">
+                    <h4>Create Your Account</h4>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">Insitute/College Name</label>
+                    <input type="text" class="form-control" placeholder="Insitute/College Name" formControlName="InstituteName">
+                    <span class="text-danger" *ngIf="SignUpInfo['InstituteName'].invalid && SignUpInfo['InstituteName'].touched ">Enter Your Insitute/College Name </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">Mobile Number</label>
+                    <input type="number" class="form-control" placeholder="Mobile Number" formControlName="MobileNumber">
+                    <span class="text-danger" *ngIf="SignUpInfo['MobileNumber'].invalid && SignUpInfo['MobileNumber'].touched ">Enter Your Mobile Number </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">Your Email </label>
+                    <input type="Email" class="form-control" placeholder="Your Email " formControlName="Email">
+                    <span class="text-danger" *ngIf="SignUpInfo['Email'].invalid && SignUpInfo['Email'].touched ">Enter Your Email </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">State </label>
+                    <input type="text" class="form-control" placeholder="State "formControlName="State">
+                    <span class="text-danger" *ngIf="SignUpInfo['State'].invalid && SignUpInfo['State'].touched ">Enter Your State </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">City </label>
+                    <input type="text" class="form-control" placeholder="City "formControlName="City">
+                    <span class="text-danger" *ngIf="SignUpInfo['City'].invalid && SignUpInfo['City'].touched ">Enter Your City </span>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <textarea name="" id="" cols="47" rows="3" formControlName="Address">Address</textarea>
+                    <span class="text-danger" *ngIf="SignUpInfo['Address'].invalid && SignUpInfo['Address'].touched ">Enter Your Address </span>
+                </div>
+                <div class="col-md-12 mt-2 text-center">
+                    <app-button type="success" value="Ragister" [disable]="signupValid()"></app-button>
+                    <p>You have account <span class="txt" (click)="login()">Login</span></p>
+                </div>
+            </form>
+        </div>
+        <div class="card frg background" *ngIf="isForgot">
+            <form class="row" [formGroup]="ForgotNum">
+                <div class="col-md-12 mt-2 text-center">
+                  <h4>  Forgot your password</h4>
+                </div>
+                <div class="col-md-12 mt-3 text-center">
+                    <h6>Enter your ragistered mobile number</h6>                </div>
+                <div class="col-md-12 mt-4">
+                    <label for="">Mobile Number</label>
+                    <input type="text" class=" form-control" placeholder="Enter Your Number" formControlName="MobileNumber">
+                    <span class="text-danger" *ngIf="ForgotInfo['MobileNumber'].invalid && ForgotInfo['MobileNumber'].touched ">Enter Your Valid Number </span>
+                </div>
+                <div class="col-md-12 mt-2 text-center">
+                    <app-button type="simple" value="Next" [disable]="forgotValid()" (click)="reset()"></app-button>
+                    <p class="mt-2">You have account <span class="txt" (click)="login()">Login</span></p>
+                </div>
+            </form>
+        </div>
+        <div class="card frg background" *ngIf="isReset" >
+            <form class="row" [formGroup]="ResetPassword">
+                <div class="col-md-12 mt-2 text-center">
+                  <h4>  Resest your password</h4>
+                </div>
+                <div class="col-md-12 mt-3 text-center">
+                    <h6>Create Your new password</h6>                </div>
+                <div class="col-md-12 mt-4">
+                    <label for="">New  Password</label>
+                    <input type="password" class=" form-control" placeholder="New Password" formControlName="newPass">
+                    <span class="text-danger" *ngIf="ResetInfor['newPass'].invalid && ResetInfor['newPass'].touched ">Enter Your New Password </span>
+   
+                </div>
+                <div class="col-md-12 mt-4">
+                    <label for="">Confirm  Password</label>
+                    <input type="password" class=" form-control" placeholder="Confirm Password" formControlName="confirmPass">
+                    <span class="text-danger" *ngIf="ResetInfor['confirmPass'].invalid && ResetInfor['confirmPass'].touched ">Enter Your Confirm Password </span><br>
+                    <span class="text-danger" *ngIf="ResetInfor['confirmPass'].value !== ResetInfor['newPass'].value && ResetInfor['confirmPass'].touched">Enter Your Confirm Password </span>
+   
+                </div>
+                <div class="col-md-12 mt-2 text-center">
+                    <app-button type="simple" value="Change Password" [disable]="ResetValid()"></app-button>
+                </div>
+            </form>
+        </div>    </div>
+</div>

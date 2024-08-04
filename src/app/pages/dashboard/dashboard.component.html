@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<div class=" background " style="margin-top: 5%;">
+    <div class="row p-5">
+        <div class="col-md-12">
+            <div class="row p-3">
+                <div class="col-md-6 mt-2">
+                    <h4>
+                        Your Record
+                    </h4>
+                </div>
+                <div class="col-md-6 d-flex">
+                    <input type="text" class="form-control mt-2" placeholder="Enter Student Name">
+                    <app-button type="success" value="Search"></app-button>
+                </div>
+
+            </div>
+            <div class="card scroll">
+                <div class="row  ">
+                    <app-button style="width: 20% !important;" type="simple" value="Add new Student"
+                        (click)="addNew()"></app-button>
+
+                </div>
+                <table class="table mt-2">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Mobile No.</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Address</th>
+                            <th scope="col">Semester</th>
+                            <th scope="col" colspan="2">Antion </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let user of userData; let i = index">
+                            <th>{{i+1}}</th>
+                            <td>{{user.first_name}}</td>
+                            <td>{{user.last_name}}</td>
+                            <td>{{user.number}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.address}}</td>
+                            <td>{{user.semester}}</td>
+                            <td><app-button value="Update" type="success"></app-button></td>
+                            <td><app-button value="Delete" type="error" (click)="deleteuser(user.id)"></app-button></td>
+                        </tr>
+
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay verifybikedetailsdiv verifybikedetailsdiv1 modal right" *ngIf="isAddnewPopup">
+    <div class="popup2  col-12" style=" overflow-x: unset;">
+        <div class="modal-header tooltip_">
+            <h4 class="modal-title">
+                <h3 class=""> Add New</h3>
+            </h4> <button type="button" class=" btn close pull-right" aria-label="Close" (click)=" close()">X </button>
+        </div>
+        <div class="modal-body heigth">
+            <form [formGroup]="addNewData" class="row">
+
+                <div class="col-md-12">
+                    <h4>User Ragistration</h4>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for="">First Name</label>
+                    <input type="text" name="" class="form-control" placeholder="First Name" id="" formControlName="firstName" >
+                    <span class="text-danger" *ngIf="addNewControl['firstName'].invalid && addNewControl['firstName'].touched ">Enter Your firstName </span>
+        
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for=""> Last Name</label>
+                    <input type="text" name="" class="form-control" placeholder="Last Name" id="" formControlName="LastName">
+                    <span class="text-danger" *ngIf="addNewControl['LastName'].invalid && addNewControl['LastName'].touched ">Enter Your LastName </span>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for="">Mobile Number</label>
+                    <input type="number" name="" class="form-control" placeholder="Mobile Number" id="" formControlName="MobileNum">
+                    <span class="text-danger" *ngIf="addNewControl['MobileNum'].invalid && addNewControl['MobileNum'].touched ">Enter Your Mobile Number </span>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for="">Email Address</label>
+                    <input type="text" name="" class="form-control" placeholder="Email Address" id="" formControlName="Email">
+                    <span class="text-danger" *ngIf="addNewControl['Email'].invalid && addNewControl['Email'].touched ">Enter Your Email </span>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <label for="">Semester </label>
+                    <input type="text" name="" class="form-control" placeholder="Semester " id="" formControlName="Semester">
+                    <span class="text-danger" *ngIf="addNewControl['Semester'].invalid && addNewControl['Semester'].touched ">Enter Your Semester </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="">Address</label>
+                    <textarea name="" id="" cols="100" rows="3" formControlName="address"></textarea>
+                    <span class="text-danger" *ngIf="addNewControl['address'].invalid && addNewControl['address'].touched ">Enter Your address </span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <app-button value="Ragister " type="success" [disable]="validation()" (click)="AddNewOne()"></app-button>
+                </div>
+
+            </form>
+        </div> 
+    </div> 
+</div>

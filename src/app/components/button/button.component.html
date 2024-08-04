@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mt-2 text-center">
+            <button class="btn " 
+            [ngClass]="{'btn-success':type=='success',
+                        'btn-primary':type=='simple',
+                        'btn-warning':type=='warning',
+                        'btn-danger':type=='error',}" [disabled]="disable">{{value}}</button>
+        </div>
+    </div>
+</div>

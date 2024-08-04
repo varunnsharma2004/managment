@@ -1,0 +1,38 @@
+
+.background{
+    background:linear-gradient(#08ADFA,#4FC1F5,#fff);
+}
+
+.login{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%
+}
+.singin{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%
+}
+.frg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%
+}
+.forgot{
+    color: blue;
+    font-weight: 500;
+    cursor: pointer;
+
+}
+.forgot:hover{
+    border-bottom: 2px solid blue;
+}
+.txt{
+    color: blue;
+    font-weight: 500;
+    cursor: pointer;
+
+}

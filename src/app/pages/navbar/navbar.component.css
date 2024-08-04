@@ -1,0 +1,40 @@
+
+.nav{
+    /* padding: 1%; */
+    /* height: 50px; */
+    overflonavw-x: hidden;
+    width: 100%;
+    background-color: transparent;  
+
+}
+ img{
+    width: 6% !important;
+}
+.hov {
+    display: inline-block;
+    font-weight: normal;
+    transition: transform 0.5s ;
+}
+
+.hov:hover {
+    transform: scale(1.4);
+    transform: translateX(10px);
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1), -1px -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(51, 51, 51,0.95) !important;
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+
